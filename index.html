@@ -136,28 +136,59 @@
   <div class="card">
     <h2>🔍 Vérifier une moto</h2>
     <p>Entrez le <strong>numéro de châssis pour savoir si une moto a été déclarée volée</strong>.</p>
-
     <input id="chassis" placeholder="Ex : LTYJX2G45M0123456">
-    <button onclick="https://script.google.com/macros/s/AKfycbwEtzBBtY1BoYz4LryYA1MhwLkTJlOLyYJzq-W8DQ5wQNifB4N-CPlPdavSRljoPp-D/exec?chassis=">Vérifier</button>
+    <button onclick="checkMoto()">Vérifier</button>
+<p id="result"></p>
 
-    <div id="result"></div>
+<script>
+function checkMoto() {
+  var chassis = document.getElementById("chassis").value;
+  var result = document.getElementById("result");
+
+  fetch("https://script.google.com/macros/s/AKfycbwEtzBBtY1BoYz4LryYA1MhwLkTJlOLyYJzq-W8DQ5wQNifB4N-CPlPdavSRljoPp-D/exec?chassis=" + chassis)
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "FOUND") {
+        result.innerHTML = "🚨 MOTO VOLÉE — Contact propriétaire : " + data.phone;
+        result.style.color = "red";
+      } else {
+        result.innerHTML = "✅ Aucune déclaration de vol";
+        result.style.color = "green";
+      }
+    });
+}
+</script>
+
+    <p class="info">
+      ⚠️ La vérification automatique sera activée après connexion complète à la base MotoAlert.
+    </p>
   </div>
 
   <!-- Déclaration -->
   <div class="card">
     <h2>🚨 Déclarer une moto volée</h2>
-    <p>Si votre moto a été volée, remplissez le formulaire officiel MotoAlert (base protégée).</p>
+    <p>Si votre moto a été volée, remplissez le formulaire officiel MotoAlert.</p>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScH-XNDTwRx8LABA9GxKFA-8NR7QJo1cgSiW4ylwfQM1PA7Og/viewform?usp=header"
-       target="_blank">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXaRZycnV48Rymkm6k6AG3_3rOmEtUWZzWGzMAd2_42b8HZQ/viewform?usp=preview" target="_blank">
       <button>Déclarer une moto volée</button>
     </a>
 
-    <p style="font-size:13px;color:#666;margin-top:10px">
-      Toute fausse déclaration engage la responsabilité de son auteur.
+    <p class="info">
+      Toute fausse déclaration engage la responsabilité pénale de son auteur.
     </p>
   </div>
 
+  <!-- Fonctionnement -->
+  <div class="card">
+    <h2>ℹ️ Comment fonctionne MotoAlert ?</h2>
+    <ul class="steps">
+      <li>Un propriétaire déclare sa moto volée</li>
+      <li>La moto est enregistrée dans la base MotoAlert</li>
+      <li>Les acheteurs peuvent vérifier avant achat</li>
+      <li>Les autorités peuvent identifier les motos signalées</li>
+    </ul>
+  </div>
+  
 </main>
 
 <footer>
