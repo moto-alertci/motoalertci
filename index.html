@@ -6,94 +6,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f4f8;
-      color: #222;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #f7f9fc, #eef2f7);
+    color: #222;
+  }
 
-    header {
-      background: white;
-      text-align: center;
-      padding: 30px 20px;
-      border-bottom: 1px solid #ddd;
-    }
+  header {
+    background: linear-gradient(90deg, #ff8c00, #009e49);
+    text-align: center;
+    padding: 35px 20px;
+    color: white;
+  }
 
-    header img {
-      width: 120px;
-      margin-bottom: 10px;
-    }
+  header img {
+    width: 110px;
+    margin-bottom: 10px;
+    background: white;
+    padding: 8px;
+    border-radius: 12px;
+  }
 
-    header h1 {
-      margin: 0;
-      color: #0d6efd;
-      font-size: 30px;
-    }
+  header h1 {
+    margin: 10px 0 5px;
+    font-size: 32px;
+    color: #ffffff;
+  }
 
-    header p {
-      margin-top: 8px;
-      color: #555;
-    }
+  header p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.95;
+  }
 
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+  main {
+    max-width: 900px;
+    margin: auto;
+    padding: 25px;
+  }
 
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-left: 8px solid #0d6efd;
+  }
 
-    .card h2 {
-      margin-top: 0;
-      color: #0d6efd;
-    }
+  .card h2 {
+    margin-top: 0;
+    color: #0d6efd;
+  }
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+  .card:nth-child(2) {
+    border-left-color: red;
+  }
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 15px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-      background: #0d6efd;
-      color: white;
-      cursor: pointer;
-    }
+  input {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
 
-    button:hover {
-      background: #0b5ed7;
-    }
+  input:focus {
+    outline: none;
+    border-color: #0d6efd;
+  }
 
-    #result {
-      margin-top: 12px;
-      font-weight: bold;
-    }
+  button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 18px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    background: #0d6efd;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: white;
-      border-top: 1px solid #ddd;
-      font-size: 14px;
-      color: #555;
-    }
-  </style>
+  button:hover {
+    background: #0b5ed7;
+  }
+
+  a button {
+    background: red;
+  }
+
+  a button:hover {
+    background: #c70000;
+  }
+
+  #result {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f1f1f1;
+    font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 25px 15px;
+    background: white;
+    border-top: 4px solid #009e49;
+    font-size: 14px;
+    color: #555;
+  }
+</style>
 </head>
 
 <body>
@@ -109,7 +135,7 @@
   <!-- Vérification -->
   <div class="card">
     <h2>🔍 Vérifier une moto</h2>
-    <p>Entrez le <strong>numéro de châssis</strong>.</p>
+    <p>Entrez le <strong>numéro de châssis pour savoir si une moto a été déclarée volée</strong>.</p>
 
     <input id="chassis" placeholder="Ex : LTYJX2G45M0123456">
     <button onclick="verifier()">Vérifier</button>
@@ -120,7 +146,7 @@
   <!-- Déclaration -->
   <div class="card">
     <h2>🚨 Déclarer une moto volée</h2>
-    <p>Déclaration officielle MotoAlert (base protégée).</p>
+    <p>Si votre moto a été volée, remplissez le formulaire officiel MotoAlert (base protégée).</p>
 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScH-XNDTwRx8LABA9GxKFA-8NR7QJo1cgSiW4ylwfQM1PA7Og/viewform?usp=header"
        target="_blank">
