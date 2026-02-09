@@ -2,42 +2,38 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>MotoAlert CI | Motos volées en Côte d’Ivoire</title>
+  <title>MotoAlert CI – Motos volées</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f9;
+      font-family: Arial, sans-serif;
+      background: #f2f4f8;
       color: #222;
     }
 
     header {
-      background: #ffffff;
-      color: #222;
-      padding: 30px 20px;
+      background: white;
       text-align: center;
+      padding: 30px 20px;
       border-bottom: 1px solid #ddd;
     }
 
     header img {
       width: 120px;
-      display: block;
-      margin: auto 0 10px 0;
+      margin-bottom: 10px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 32px;
-      letter-spacing: 1px;
       color: #0d6efd;
+      font-size: 30px;
     }
 
     header p {
-      margin-top: 10px;
-      font-size: 16px;
-      opacity: 0.8;
+      margin-top: 8px;
+      color: #555;
     }
 
     main {
@@ -47,11 +43,11 @@
     }
 
     .card {
-      background: #fff;
+      background: white;
       border-radius: 10px;
       padding: 25px;
       margin-bottom: 25px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
     .card h2 {
@@ -62,8 +58,8 @@
     input {
       width: 100%;
       padding: 14px;
-      font-size: 16px;
       margin-top: 10px;
+      font-size: 16px;
       border-radius: 6px;
       border: 1px solid #ccc;
     }
@@ -84,32 +80,18 @@
       background: #0b5ed7;
     }
 
-    .info {
-      font-size: 14px;
-      margin-top: 10px;
-      color: #555;
-    }
-
-    .steps li {
-      margin-bottom: 10px;
+    #result {
+      margin-top: 12px;
+      font-weight: bold;
     }
 
     footer {
-      background: #fff;
-      border-top: 1px solid #ddd;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
+      background: white;
+      border-top: 1px solid #ddd;
       font-size: 14px;
       color: #555;
-    }
-
-    footer strong {
-      color: #0d6efd;
-    }
-
-    #result {
-      margin-top: 10px;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -117,50 +99,37 @@
 <body>
 
 <header>
-  <img src="logo.png" alt="MotoAlert CI">
-  <h1>MotoAlert</h1>
-  <p>Vérifiez avant d’acheter. Signalez pour protéger.</p>
+  <img src="WhatsApp Image 2026-02-09 at 00.36.43" alt="MotoAlert CI">
+  <h1>MotoAlert CI</h1>
+  <p>Vérifier avant d’acheter • Signaler pour protéger</p>
 </header>
 
 <main>
 
-  <!-- Vérification réelle -->
+  <!-- Vérification -->
   <div class="card">
     <h2>🔍 Vérifier une moto</h2>
-    <p>Entrez le <strong>numéro de châssis</strong> pour savoir si une moto a été déclarée volée.</p>
+    <p>Entrez le <strong>numéro de châssis</strong>.</p>
 
-    <input type="text" id="chassis" placeholder="Ex : LTYJX2G45M0123456">
-    <button onclick="checkMoto()">Vérifier</button>
-    <p id="result"></p>
+    <input id="chassis" placeholder="Ex : LTYJX2G45M0123456">
+    <button onclick="verifier()">Vérifier</button>
 
-    <p class="info">
-      ⚠️ La vérification automatique fonctionne grâce à la base MotoAlert.
-    </p>
+    <div id="result"></div>
   </div>
 
   <!-- Déclaration -->
   <div class="card">
     <h2>🚨 Déclarer une moto volée</h2>
-    <p>Si votre moto a été volée, remplissez le formulaire officiel MotoAlert.</p>
+    <p>Déclaration officielle MotoAlert (base protégée).</p>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScH-XNDTwRx8LABA9GxKFA-8NR7QJo1cgSiW4ylwfQM1PA7Og/viewform?usp=header" target="_blank">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScH-XNDTwRx8LABA9GxKFA-8NR7QJo1cgSiW4ylwfQM1PA7Og/viewform?usp=header"
+       target="_blank">
       <button>Déclarer une moto volée</button>
     </a>
 
-    <p class="info">
-      Toute fausse déclaration engage la responsabilité pénale de son auteur.
+    <p style="font-size:13px;color:#666;margin-top:10px">
+      Toute fausse déclaration engage la responsabilité de son auteur.
     </p>
-  </div>
-
-  <!-- Fonctionnement -->
-  <div class="card">
-    <h2>ℹ️ Comment fonctionne MotoAlert ?</h2>
-    <ul class="steps">
-      <li>Un propriétaire déclare sa moto volée</li>
-      <li>La moto est enregistrée dans la base MotoAlert</li>
-      <li>Les acheteurs peuvent vérifier avant achat</li>
-      <li>Les autorités peuvent identifier les motos signalées</li>
-    </ul>
   </div>
 
 </main>
@@ -171,30 +140,35 @@
 </footer>
 
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbwywtmH0igxy1n9vtTyFTYfkAjOZCq9ikDZBcwKVNSa3zbKPia_a0AZyurncEsgU0MsFQ/exec";
+const API =
+"https://script.google.com/macros/s/AKfycbwywtmH0igxy1n9vtTyFTYfkAjOZCq9ikDZBcwKVNSa3zbKPia_a0AZyurncEsgU0MsFQ/exec";
 
-function checkMoto() {
+function verifier() {
   const chassis = document.getElementById("chassis").value.trim();
   const result = document.getElementById("result");
 
-  if(!chassis) {
+  if (!chassis) {
     result.innerHTML = "⚠️ Veuillez entrer un numéro de châssis";
     result.style.color = "orange";
     return;
   }
 
-  fetch(`${API_URL}?chassis=${chassis}`)
-    .then(res => res.json())
+  fetch(`${API}?chassis=${encodeURIComponent(chassis)}`)
+    .then(r => r.json())
     .then(data => {
       if (data.status === "FOUND") {
-        result.innerHTML = `🚨 MOTO VOLÉE ! Propriétaire : ${data.nom} / ${data.phone} / ${data.marque} ${data.couleur}`;
+        result.innerHTML =
+          "🚨 MOTO VOLÉE<br>" +
+          "Propriétaire : " + data.nom + "<br>" +
+          "Téléphone : " + data.phone + "<br>" +
+          "Moto : " + data.marque + " / " + data.couleur;
         result.style.color = "red";
       } else {
-        result.innerHTML = "✅ Aucune déclaration de vol";
+        result.innerHTML = "✅ Aucune déclaration trouvée";
         result.style.color = "green";
       }
     })
-    .catch(err => {
+    .catch(() => {
       result.innerHTML = "❌ Erreur de connexion";
       result.style.color = "red";
     });
